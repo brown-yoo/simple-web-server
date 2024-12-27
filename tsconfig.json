@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2020", // 컴파일 타겟 버전
+    "module": "commonjs", // Node.js와 호환되는 모듈 시스템
+    "outDir": "dist", // 컴파일된 파일의 출력 경로
+    "rootDir": "src", // 소스 코드의 루트 경로
+    "strict": true, // 엄격한 타입 검사
+    "esModuleInterop": true, // ES6 모듈 호환성
+    "resolveJsonModule": true, // JSON 파일 임포트 지원
+    "moduleResolution": "node", // 모듈 해석 방식
+    "baseUrl": ".", // 경로 별칭을 위한 기본 경로
+    "paths": { // 경로 별칭 설정
+      "@shared/*": [
+        "src/shared/*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*",
+  ], // 컴파일할 파일 포함
+  "exclude": [
+    "node_modules"
+  ] // 제외할 파일
+}

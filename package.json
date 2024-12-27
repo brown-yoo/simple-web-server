@@ -1,0 +1,27 @@
+{
+  "name": "ts-node-boilerplate",
+  "version": "0.0.0",
+  "main": "src/index.js",
+  "author": {
+    "name": "모바일팀/Brown",
+    "email": "brown.yoo@gbike.io"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "prestart": "yarn build",
+    "start": "ts-node -r tsconfig-paths/register src/index.ts",
+    "dev": "nodemon"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "@types/node": "^22.10.2",
+    "es-toolkit": "^1.30.1",
+    "tsconfig-paths": "^4.2.0",
+    "zod": "^3.24.1"
+  }
+}
