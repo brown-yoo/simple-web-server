@@ -6,7 +6,7 @@ export class Logger {
   constructor(private readonly stacks: string[]) {}
 
   private get timestamp() {
-    return dayjs().format("YYYY-MM-DD HH:mm:ss");
+    return dayjs().format("YYYY-MM-DD HH:mm:ss.SSS");
   }
 
   private get stack() {

@@ -1,7 +1,8 @@
-import { saySomething } from "@shared/tools/say-something.tool";
+import { Logger } from "@shared/tools";
 
 export const App = () => {
-  saySomething("Hello, World!");
+  const logger = new Logger(["App"]);
+  logger.info("App is running");
 };
 
 App();
