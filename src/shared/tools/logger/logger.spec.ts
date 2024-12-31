@@ -3,6 +3,7 @@ import { Logger } from "./logger.tool";
 import { LoggerType } from "./logger.type";
 import picocolors from "picocolors";
 
+// TODO: winston 라이브러리를 사용하여 로그를 출력하도록 수정한다.
 const generatePrefix = (timestamp: string, type: LoggerType, stack: string) => {
   const alignedType = type.padStart(7, " ");
   if (stack === "") {
