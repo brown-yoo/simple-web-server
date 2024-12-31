@@ -1,9 +1,10 @@
-import { Logger } from "@shared/tools";
+import { Logger, read } from "@shared/tools";
 import { useSharedStore } from "@shared/stores";
 import inquirer from "inquirer";
 import { readRawDevelopers } from "@shared/tools/assets/developer/read.tool";
 import { printDeveloper } from "@shared/tools/assets/developer/print.tool";
 import { writeDeveloper } from "@shared/tools/assets/developer/write.tool";
+import { DeveloperSchema, RawTeams } from "@shared/types";
 
 export const DemoApp = async () => {
   const logger = new Logger(["DemoApp"]);
@@ -34,6 +35,8 @@ export const DemoApp = async () => {
   if (response.developer === "new") {
     logger.info("새로운 개발자를 추가합니다");
 
+    const loadedTeams = read<RawTeams>("teams.raw.json");
+
     const newDeveloper = await inquirer.prompt([
       {
         type: "input",
@@ -41,23 +44,29 @@ export const DemoApp = async () => {
         message: "이름을 입력해주세요",
       },
       {
-        type: "input",
+        type: "list",
         name: "team",
-        message: "팀을 입력해주세요",
+        message: "팀을 선택해주세요",
+        choices: loadedTeams.map((team) => team.name),
       },
     ]);
 
-    logger.info(`새로운 개발자를 추가합니다 - ${printDeveloper(newDeveloper)}`);
+    const validatedDeveloper = DeveloperSchema.validateSync(newDeveloper);
 
-    const response = writeDeveloper(newDeveloper);
-    if (!response.result) {
+    logger.info(
+      `새로운 개발자를 추가합니다 - ${printDeveloper(validatedDeveloper)}`
+    );
+
+    const response = writeDeveloper(validatedDeveloper);
+
+    if (!response?.result) {
       logger.error(
-        `이미 존재하는 개발자입니다 - ${printDeveloper(newDeveloper)}`
+        `이미 존재하는 개발자입니다 - ${printDeveloper(validatedDeveloper)}`
       );
       return;
     }
 
-    useSharedStore.getState().setCurrentWorker(newDeveloper);
+    useSharedStore.getState().setCurrentWorker(validatedDeveloper);
   } else {
     useSharedStore.getState().setCurrentWorker(response.developer);
   }

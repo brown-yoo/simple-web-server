@@ -1,5 +1,5 @@
 import { Logger } from "@shared/tools/logger";
-import { Developer } from "@shared/types";
+import { Developer, DeveloperSchema } from "@shared/types";
 import { printDeveloper } from "./print.tool";
 import { readRawDevelopers } from "./read.tool";
 import { write } from "../fs";
@@ -23,7 +23,9 @@ export const writeDeveloper = (developer: Developer) => {
     };
   }
 
-  loaded.developers.push(developer);
+  const validatedDeveloper = DeveloperSchema.validateSync(developer);
+
+  loaded.developers.push(validatedDeveloper);
   write("developers.raw.json", loaded);
 
   return {
