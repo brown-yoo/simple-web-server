@@ -37,7 +37,7 @@ describe("Logger", () => {
     const spy = jest.spyOn(console, "info");
     logger.info(EXPECTED_LOGGING_SENTENCE);
     expect(spy).toHaveBeenCalledWith(
-      picocolors.blue(
+      picocolors.green(
         `${generatePrefix(now, "INFO", "TEST")} ${EXPECTED_LOGGING_SENTENCE}`
       )
     );

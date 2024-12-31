@@ -14,7 +14,7 @@ export class Logger {
   }
 
   private prefix(type: LoggerType) {
-    const alignedType = type.padStart(7, " ");
+    const alignedType = type.padStart(5, " ");
     if (this.stack === "") {
       return `${this.timestamp} - ${alignedType}`;
     }
@@ -31,7 +31,7 @@ export class Logger {
   }
 
   public info(message: string) {
-    console.info(picocolors.blue(this.format("INFO", message)));
+    console.info(picocolors.green(this.format("INFO", message)));
   }
 
   public warn(message: string) {
