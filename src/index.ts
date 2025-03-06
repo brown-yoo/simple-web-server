@@ -1,5 +1,5 @@
 import { Logger } from "@shared/tools";
-import { DemoApp } from "./apps";
+import { serverApp } from "./apps";
 import { ValidationError } from "yup";
 
 export const App = async () => {
@@ -8,7 +8,7 @@ export const App = async () => {
   logger.info("App is running");
 
   try {
-    await DemoApp();
+    serverApp();
   } catch (e: any) {
     if (e instanceof ValidationError) {
       logger.error(e.errors.join("\n"));
