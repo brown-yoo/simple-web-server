@@ -1,6 +1,6 @@
 # 토이 서버
 
-Stripe 테스트를 위해서 간이로 만든 서버입니다
+테스트를 위해서 간이로 만든 서버입니다
 
 ## 사용법
 
@@ -13,18 +13,24 @@ Stripe 테스트를 위해서 간이로 만든 서버입니다
 ### 접근 테스트
 
 ```curl
-curl -X POST http://localhost:3000/stripe/payment-sheet
+curl -X POST http://localhost:3000/web
 ```
 
 ### 응답 예시
 
-```json
-{
-    "paymentIntent": "pi_3Qzo8bDv2zRgXuBo00cmvaHO_secret_cf6Ln17PTYvYkzbIBGVre4qY1",
-    "ephemeralKey": "ek_test_YWNjdF8xUUY1NUZEdjJ6UmdYdUJvLE5wUjBLbUVXekdiOU10QVNKOUhya0hnSm82RmhTUms_00w6qS4s1h",
-    "customer": "cus_RtbLAyvAo49zXI",
-    "publishableKey": "pk_test_51QF55FDv2zRgXuBoFzhPTIXXPYvChuaWYjEwiJJJqgNNxEwFiqzcWdZd52Pvt3lMXdFsaUgHnDPFiaTh9jl672ey00Gdi4oOBl"
-}
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Welcome to the HTML file!</h1>
+  <p>This is a simple HTML file.</p>
+</body>
+</html>
 ```
 
 ### 주의사항
